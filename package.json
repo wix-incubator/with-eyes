@@ -1,0 +1,38 @@
+{
+  "name": "with-eyes",
+  "version": "1.0.0",
+  "license": "UNLICENSED",
+  "author": {
+    "name": "Mantas Miliukas",
+    "email": "mantasm@wix.com"
+  },
+  "main": "mocha.js",
+  "files": [
+    "mocha.js",
+    "eyes.js"
+  ],
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/"
+  },
+  "scripts": {
+    "start": "npm run test:mocha -- --watch",
+    "test": "npm run test:mocha",
+    "test:mocha": "mocha ./test/mocha.spec.js --reporter mocha-env-reporter",
+    "build": ":",
+    "release": ":"
+  },
+  "devDependencies": {
+    "chai": "~4.1.0",
+    "eslint": "^4.19.1",
+    "eslint-config-wix": "^1.1.18",
+    "mocha": "^5.1.1",
+    "mocha-env-reporter": "^3.0.0"
+  },
+  "dependencies": {
+    "eyes.images": "0.0.50",
+    "uuid": "^3.2.1"
+  },
+  "eslintConfig": {
+    "extends": "wix/esnext"
+  }
+}
