@@ -1,6 +1,6 @@
 const {expect} = require('chai');
 
-const {eyes} = require('../mocha');
+const {eyes} = require('../');
 
 describe('mocha', () => {
 

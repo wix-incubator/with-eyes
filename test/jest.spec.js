@@ -1,6 +1,6 @@
 /* global jest */
 
-const {eyes} = require('../jest');
+const {eyes} = require('../');
 
 describe('jest', () => {
 

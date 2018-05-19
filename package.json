@@ -1,12 +1,12 @@
 {
   "name": "with-eyes",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "license": "UNLICENSED",
   "author": {
     "name": "Mantas Miliukas",
     "email": "mantasm@wix.com"
   },
-  "main": "mocha.js",
+  "main": "index.js",
   "files": [
     "*.js"
   ],

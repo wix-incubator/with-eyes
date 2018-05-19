@@ -1,4 +1,4 @@
-const {eyes} = require('../jasmine');
+const {eyes} = require('../');
 
 describe('jasmine', () => {
 

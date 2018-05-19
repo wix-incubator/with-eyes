@@ -35,6 +35,10 @@ Import `eyes` from a specific test runner package.
 const {eyes} = require('with-eyes/mocha');
 const {eyes} = require('with-eyes/jest');
 const {eyes} = require('with-eyes/jasmine');
+
+// This import will try to autodect which test runner you are using
+// and will reexport from a corresponding package mentioned above.
+const {eyes} = require('with-eyes');
 ```
 
 And just use it:
@@ -52,3 +56,6 @@ eyes.test.only('...', () => {});
 eyes.it('...', () => {});
 eyes.it.only('...', () => {});
 ```
+
+> It's that easy. It's Wix!
+
