@@ -1,13 +1,29 @@
-const {callEyes} = require('./eyes');
+/* global it */
 
-function withEyes(callback, options) {
+const {
+  DEFAULT_TIMEOUT,
+  openEyes,
+  checkImage
+} = require('./eyes');
+
+const eyes = {
+  checkImage
+};
+
+eyes.it = function (name, fn, options) {
+  return it(name, run(name, fn, options));
+};
+
+eyes.it.only = function (name, fn, options) {
+  // eslint-disable-next-line mocha/no-exclusive-tests
+  return it.only(name, run(name, fn, options));
+};
+
+function run(name, fn, options) {
   return async function () {
-    this.timeout(30000);
-
-    const test = this.test.fullTitle();
-    const version = (options || {}).version || 'v1.0.0';
-    await callEyes.call(this, callback, test, version);
+    this.timeout(DEFAULT_TIMEOUT);
+    return await openEyes.call(this, fn, this.test.fullTitle(), options);
   };
 }
 
-module.exports.withEyes = withEyes;
+module.exports.eyes = eyes;

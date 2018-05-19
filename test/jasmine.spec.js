@@ -1,30 +1,26 @@
-const {expect} = require('chai');
+const {eyes} = require('../jasmine');
 
-const {eyes} = require('../mocha');
-
-describe('mocha', () => {
+describe('jasmine', () => {
 
   it('should run without eyes', () => {
-    expect(true).to.be.true;
+    expect(true).toBeTruthy();
   });
 
   eyes.it('should run without image checks', () => {
-    expect(true).to.be.true;
-  });
-
-  eyes.it('should allow overriding default timeout', function () {
-    expect(this.timeout()).to.equal(30000);
-    this.timeout(500);
-    expect(this.timeout()).to.equal(500);
+    expect(true).toBeTruthy();
   });
 
   eyes.it('should check the image', async () => {
     await eyes.checkImage(require('./stubs/image.json'), 'image 1');
   });
 
-  eyes.it('should check image', async () => {
+  eyes.it('should check the image', async () => {
     await eyes.checkImage(require('./stubs/image.json'), 'image 1');
   }, {version: '2.0.0'});
+
+  eyes.it('should check the image', async () => {
+    await eyes.checkImage(require('./stubs/image.json'), 'image 1');
+  }, 20000, {version: '3.0.0'});
 
   eyes.it('should check multiple images', async () => {
     await eyes.checkImage(require('./stubs/image.json'), 'image 1');

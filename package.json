@@ -1,6 +1,6 @@
 {
   "name": "with-eyes",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "license": "UNLICENSED",
   "author": {
     "name": "Mantas Miliukas",
@@ -8,23 +8,26 @@
   },
   "main": "mocha.js",
   "files": [
-    "mocha.js",
-    "eyes.js"
+    "*.js"
   ],
   "publishConfig": {
     "registry": "https://registry.npmjs.org/"
   },
   "scripts": {
     "start": "npm run test:mocha -- --watch",
-    "test": "npm run test:mocha",
+    "test": "export EYES_BATCH_UUID=$(uuidgen) && npm run test:mocha && npm run test:jest && npm run test:jasmine",
     "test:mocha": "mocha ./test/mocha.spec.js --reporter mocha-env-reporter",
-    "build": ":",
+    "test:jest": "jest ./test/jest.spec.js",
+    "test:jasmine": "jasmine ./test/jasmine.spec.js",
+    "build": "eslint *.js test",
     "release": ":"
   },
   "devDependencies": {
     "chai": "~4.1.0",
     "eslint": "^4.19.1",
     "eslint-config-wix": "^1.1.18",
+    "jasmine": "^3.1.0",
+    "jest": "^22.4.3",
     "mocha": "^5.1.1",
     "mocha-env-reporter": "^3.0.0"
   },

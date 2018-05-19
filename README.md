@@ -1,6 +1,6 @@
 # with-eyes
 
-A simple `jest` or `mocha` high order function to compare screenshots, using [Applitools Eyes](https://applitools.com/).
+Simple `jest`, `mocha` and `jasmine` high order function to compare screenshots, using [Applitools Eyes](https://applitools.com/).
 It integrates nicely with [Puppeteer](https://github.com/GoogleChrome/puppeteer) and [Protractor](https://github.com/angular/protractor).
 
 ## Install
@@ -11,36 +11,44 @@ npm install with-eyes --save-dev
 
 ## Example
 
-Here is a small example by using `puppeteer`:
+Here is an example by `mocha` as test runner:
 
 ```js
-  const {withEyes} = require('with-eyes/mocha');
+  const {eyes} = require('with-eyes/mocha');
 
   describe('my application', () => {
 
-    // ... open page with puppeteer
-
-    it('should open a contacts page', withEyes(async checkImage => {
+    eyes.it('should open a contacts page', async () => {
       // ... navigate, do actions
-      await checkImage(await page.screenshot(), 'start page');
+      await eyes.checkImage(await page.screenshot(), 'start page'); // using puppeteer
+      await eyes.checkImage(await browser.takeScreenshot(), 'start page'); // using protractor
     }));
 
   });
 ```
 
-And here is how you could use it with `protractor`:
+## API
+
+Import `eyes` from a specific test runner package.
 
 ```js
-  const {withEyes} = require('with-eyes/mocha');
+const {eyes} = require('with-eyes/mocha');
+const {eyes} = require('with-eyes/jest');
+const {eyes} = require('with-eyes/jasmine');
+```
 
-  describe('my application', () => {
+And just use it:
 
-    // ... open page with protractor
+```js
+// jasmine
+eyes.it('...', () => {});
+eyes.fit('...', () => {});
 
-    it('should open a contacts page', withEyes(async checkImage => {
-      // ...navigate, do actions
-      await checkImage(await browser.takeScreenshot(), 'start page');
-    }));
+// jest
+eyes.test('...', () => {});
+eyes.test.only('...', () => {});
 
-  });
+// mocha
+eyes.it('...', () => {});
+eyes.it.only('...', () => {});
 ```
