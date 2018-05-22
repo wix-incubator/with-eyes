@@ -19,6 +19,10 @@ eyes.it.only = function (name, fn, options) {
   return it.only(name, run(name, fn, options));
 };
 
+eyes.it.skip = function (name, fn) {
+  return it.skip(name, fn);
+};
+
 function run(name, fn, options) {
   return async function () {
     this.timeout(DEFAULT_TIMEOUT);

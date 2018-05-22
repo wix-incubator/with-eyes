@@ -27,4 +27,8 @@ describe('jasmine', () => {
     await eyes.checkImage(require('./stubs/image.json'), 'image 2');
   });
 
+  eyes.xit('should skip this test', () => {
+    expect(true).toBeFalsy();
+  });
+
 });

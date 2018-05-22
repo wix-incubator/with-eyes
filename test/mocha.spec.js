@@ -31,4 +31,8 @@ describe('mocha', () => {
     await eyes.checkImage(require('./stubs/image.json'), 'image 2');
   });
 
+  eyes.it.skip('should skip this test', () => {
+    expect(true).to.be.false;
+  });
+
 });

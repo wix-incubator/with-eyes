@@ -19,6 +19,10 @@ eyes.it = function (name, fn, timeoutOrOptions, options) {
   return spec;
 };
 
+eyes.xit = function (name, fn) {
+  return xit(name, fn);
+};
+
 eyes.fit = function (name, fn, timeoutOrOptions, options) {
   const timeout = Number.isInteger(timeoutOrOptions) ? timeoutOrOptions : DEFAULT_TIMEOUT;
   const optionalOptions = Number.isInteger(timeoutOrOptions) ? options : timeoutOrOptions;

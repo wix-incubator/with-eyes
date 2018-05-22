@@ -35,4 +35,8 @@ describe('jest', () => {
     await eyes.checkImage(require('./stubs/image.json'), 'image 2');
   });
 
+  eyes.test.skip('should skip this test', () => {
+    expect(true).to.be.false;
+  });
+
 });

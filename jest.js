@@ -23,6 +23,10 @@ eyes.test.only = function (name, fn, timeoutOrOptions, options) {
   return test.only(name, run(name, fn, optionalOptions), timeout);
 };
 
+eyes.test.skip = function (name, fn) {
+  return test.skip(name, fn);
+};
+
 function run(name, fn, options) {
   return async function () {
     return await openEyes.call(this, fn, expect.getState().currentTestName, options);
