@@ -47,14 +47,17 @@ And just use it:
 // jasmine
 eyes.it('...', () => {});
 eyes.fit('...', () => {});
+eyes.xit('...', () => {});
 
 // jest
 eyes.test('...', () => {});
 eyes.test.only('...', () => {});
+eyes.test.skip('...', () => {});
 
 // mocha
 eyes.it('...', () => {});
 eyes.it.only('...', () => {});
+eyes.it.skip('...', () => {});
 ```
 
 > It's that easy. It's Wix!
