@@ -15,7 +15,7 @@
   },
   "scripts": {
     "start": "npm run test:mocha -- --watch",
-    "test": "npm run test:mocha && npm run test:jest && npm run test:jasmine",
+    "test": "WITH_EYES_TIMEOUT=60000 npm run test:mocha && npm run test:jest && npm run test:jasmine",
     "test:mocha": "mocha ./test/mocha.spec.js",
     "test:jest": "jest ./test/jest.spec.js",
     "test:jasmine": "jasmine ./test/jasmine.spec.js",

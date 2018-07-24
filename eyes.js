@@ -8,7 +8,7 @@ const {
 } = process.env;
 
 const eyes = {
-  DEFAULT_TIMEOUT: 30000,
+  DEFAULT_TIMEOUT: parseInt(process.env.WITH_EYES_TIMEOUT, 10) || 30000,
   checkImage: () => {},
   // eslint-disable-next-line object-shorthand, no-unused-vars
   openEyes: function (fn, test, options) {

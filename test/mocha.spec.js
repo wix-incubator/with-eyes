@@ -13,7 +13,7 @@ describe('mocha', () => {
   });
 
   eyes.it('should allow overriding default timeout', function () {
-    expect(this.timeout()).to.equal(30000);
+    expect(this.timeout()).to.equal(60000);
     this.timeout(500);
     expect(this.timeout()).to.equal(500);
   });
