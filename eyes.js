@@ -13,7 +13,8 @@ const eyes = {
   // eslint-disable-next-line object-shorthand, no-unused-vars
   openEyes: function (fn, test, options) {
     return fn.call(this);
-  }
+  },
+  abortIfNotClosed: async () => Promise.resolve()
 };
 
 if (EYES_API_KEY) {
@@ -25,6 +26,7 @@ if (EYES_API_KEY) {
   instance.setBatch(name, EYES_BATCH_UUID || uuid.v4());
 
   eyes.checkImage = instance.checkImage.bind(instance);
+  eyes.abortIfNotClosed = instance.abortIfNotClosed.bind(instance);
 
   eyes.openEyes = async function (fn, test, options) {
     const version = (options || {}).version || '1.0.0';

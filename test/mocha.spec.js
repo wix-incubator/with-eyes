@@ -35,4 +35,9 @@ describe('mocha', () => {
     expect(true).to.be.false;
   });
 
+  describe('should allow aborting the results from previous test', () => {
+    beforeEach(() => eyes.abortIfNotClosed());
+    it('should succeed', () => {});
+  });
+
 });

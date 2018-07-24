@@ -3,11 +3,13 @@
 const {
   DEFAULT_TIMEOUT,
   openEyes,
-  checkImage
+  checkImage,
+  abortIfNotClosed
 } = require('./eyes');
 
 const eyes = {
-  checkImage
+  checkImage,
+  abortIfNotClosed
 };
 
 eyes.test = function (name, fn, timeoutOrOptions, options) {
