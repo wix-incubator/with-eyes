@@ -14,8 +14,8 @@ describe('jest', () => {
     expect(true).toBeTruthy();
   });
 
-  eyes.test('should allow overriding default timeout', done => {
-    setTimeout(done, 2000);
+  eyes.test('should allow overriding default timeout', async () => {
+    await new Promise(resolve => setTimeout(resolve, 2000));
   });
 
   eyes.test('should check the image', async () => {

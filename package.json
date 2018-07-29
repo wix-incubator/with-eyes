@@ -36,5 +36,8 @@
   },
   "eslintConfig": {
     "extends": "wix/esnext"
+  },
+  "jest": {
+    "testEnvironment": "node"
   }
 }
