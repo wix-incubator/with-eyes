@@ -62,3 +62,20 @@ eyes.it.skip('...', () => {});
 
 > It's that easy. It's Wix!
 
+### Using Baseline name
+
+By default `eyes` always saves baseline within its environment (combination of OS, Viewport Size and Browser). If you want to compare different browsers you should set [Baseline Name](https://help.applitools.com/hc/en-us/articles/360006914692-Cross-Environment-Testing).
+
+It is also convenient when you use fullscreen screenshots. It will compare different viewport size images by baseline name.
+
+If you want to use baseline name you should say it explicitly:
+
+```js
+const { eyes, useBaselineName } = require('with-eyes');
+
+...
+
+beforeEach(() => useBaselineName(true));
+```
+
+`with-eyes` will then automagically create baseline name for your tests.
