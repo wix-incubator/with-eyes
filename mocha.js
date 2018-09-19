@@ -1,10 +1,13 @@
 /* global it */
 
 const {
-  DEFAULT_TIMEOUT,
-  openEyes,
-  checkImage,
-  abortIfNotClosed
+  eyes: {
+    DEFAULT_TIMEOUT,
+    openEyes,
+    checkImage,
+    abortIfNotClosed
+  },
+  useBaselineName
 } = require('./eyes');
 
 const eyes = {
@@ -33,3 +36,4 @@ function run(name, fn, options) {
 }
 
 module.exports.eyes = eyes;
+module.exports.useBaselineName = useBaselineName;

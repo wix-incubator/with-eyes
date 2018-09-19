@@ -17,6 +17,12 @@ const eyes = {
   abortIfNotClosed: async () => Promise.resolve()
 };
 
+let addBaselineName = false;
+
+function useBaselineName(value) {
+  addBaselineName = !!value;
+}
+
 if (EYES_API_KEY) {
   const {name} = require(path.join(process.cwd(), 'package.json'));
   const instance = new Eyes();
@@ -29,7 +35,11 @@ if (EYES_API_KEY) {
   eyes.abortIfNotClosed = instance.abortIfNotClosed.bind(instance);
 
   eyes.openEyes = async function (fn, test, options) {
+    if (addBaselineName) {
+      instance.setBaselineEnvName(test);
+    }
     const version = (options || {}).version || '1.0.0';
+    const throwOnFail = options ? options.throwOnFail : true;
     try {
       await instance.open(name, `${test}, ${version}`);
       await fn.call(this);
@@ -37,9 +47,10 @@ if (EYES_API_KEY) {
       await instance.abortIfNotClosed();
       throw error;
     }
-    await instance.close();
+    await instance.close(throwOnFail);
   };
 
 }
 
-module.exports = eyes;
+module.exports.eyes = eyes;
+module.exports.useBaselineName = useBaselineName;

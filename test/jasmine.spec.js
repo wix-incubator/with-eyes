@@ -1,6 +1,8 @@
-const {eyes} = require('../');
+const {eyes, useBaselineName} = require('../');
 
 describe('jasmine', () => {
+
+  beforeEach(() => useBaselineName(false));
 
   it('should run without eyes', () => {
     expect(true).toBeTruthy();
@@ -29,6 +31,19 @@ describe('jasmine', () => {
 
   eyes.xit('should skip this test', () => {
     expect(true).toBeFalsy();
+  });
+
+  describe('should use baseline name', () => {
+    beforeEach(() => useBaselineName(true));
+
+    // Duplicate test name with different image to test baseline name
+    eyes.it('shouldnt create new baseline image', async () => {
+      await eyes.checkImage(require('./stubs/image.json'));
+    });
+    eyes.it('shouldnt create new baseline image', async () => {
+      const result = await eyes.checkImage(require('./stubs/image2.json'));
+      expect(result.asExpected).toBeFalsy();
+    }, {throwOnFail: false});
   });
 
 });
