@@ -1,8 +1,9 @@
 const {expect} = require('chai');
-
-const {eyes} = require('../');
+const {eyes, useBaselineName} = require('../');
 
 describe('mocha', () => {
+
+  beforeEach(() => useBaselineName(false));
 
   it('should run without eyes', () => {
     expect(true).to.be.true;
@@ -38,6 +39,19 @@ describe('mocha', () => {
   describe('should allow aborting the results from previous test', () => {
     beforeEach(() => eyes.abortIfNotClosed());
     it('should succeed', () => {});
+  });
+
+  describe('should use baseline name', () => {
+    beforeEach(() => useBaselineName(true));
+
+    // Duplicate test name with different image to test baseline name
+    eyes.it('shouldnt create new baseline image', async () => {
+      await eyes.checkImage(require('./stubs/image.json'));
+    });
+    eyes.it('shouldnt create new baseline image', async () => {
+      const result = await eyes.checkImage(require('./stubs/image2.json'));
+      expect(result.asExpected).to.be.false;
+    }, {throwOnFail: false});
   });
 
 });

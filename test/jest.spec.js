@@ -1,8 +1,10 @@
 /* global jest */
 
-const {eyes} = require('../');
+const {eyes, useBaselineName} = require('../');
 
 describe('jest', () => {
+
+  beforeEach(() => useBaselineName(false));
 
   jest.setTimeout(1000);
 
@@ -37,6 +39,19 @@ describe('jest', () => {
 
   eyes.test.skip('should skip this test', () => {
     expect(true).to.be.false;
+  });
+
+  describe('should use baseline name', () => {
+    beforeEach(() => useBaselineName(true));
+
+    // Duplicate test name with different image to test baseline name
+    eyes.test('shouldnt create new baseline image', async () => {
+      await eyes.checkImage(require('./stubs/image.json'));
+    });
+    eyes.test('shouldnt create new baseline image', async () => {
+      const result = await eyes.checkImage(require('./stubs/image2.json'));
+      expect(result.asExpected).toBeFalsy();
+    }, {throwOnFail: false});
   });
 
 });

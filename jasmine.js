@@ -1,10 +1,13 @@
 /* global it, fit, expect */
 
 const {
-  DEFAULT_TIMEOUT,
-  openEyes,
-  checkImage,
-  abortIfNotClosed
+  eyes: {
+    DEFAULT_TIMEOUT,
+    openEyes,
+    checkImage,
+    abortIfNotClosed
+  },
+  useBaselineName
 } = require('./eyes');
 
 const eyes = {
@@ -35,3 +38,4 @@ eyes.fit = function (name, fn, timeoutOrOptions, options) {
 };
 
 module.exports.eyes = eyes;
+module.exports.useBaselineName = useBaselineName;
