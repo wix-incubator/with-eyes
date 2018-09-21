@@ -79,3 +79,5 @@ beforeEach(() => useBaselineName(true));
 ```
 
 `with-eyes` will then automagically create baseline name for your tests.
+
+**TIP: Don't itroduce `useBaselineName` with other breaking changes**. When introducing baseline name to existing tests find your stable version, add `useBaselineName` option and run your tests. When tests with baseline name is ran for the first time they appear as new and are not compared to anything.
