@@ -1,5 +1,5 @@
 const {expect} = require('chai');
-const {eyes, useBaselineName} = require('../');
+const {eyes, useBaselineName, useFixedViewPort} = require('../');
 
 describe('mocha', () => {
 
@@ -42,7 +42,10 @@ describe('mocha', () => {
   });
 
   describe('should use baseline name', () => {
-    beforeEach(() => useBaselineName(true));
+    beforeEach(() => {
+      useBaselineName(true);
+      useFixedViewPort(false);
+    });
 
     // Duplicate test name with different image to test baseline name
     eyes.it('shouldnt create new baseline image', async () => {

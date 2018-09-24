@@ -7,7 +7,8 @@ const {
     checkImage,
     abortIfNotClosed
   },
-  useBaselineName
+  useBaselineName,
+  useFixedViewPort
 } = require('./eyes');
 
 const eyes = {
@@ -39,3 +40,4 @@ eyes.fit = function (name, fn, timeoutOrOptions, options) {
 
 module.exports.eyes = eyes;
 module.exports.useBaselineName = useBaselineName;
+module.exports.useFixedViewPort = useFixedViewPort;

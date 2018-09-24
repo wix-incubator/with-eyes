@@ -18,6 +18,11 @@ const eyes = {
 };
 
 let addBaselineName = false;
+let fixedViewPort = true;
+
+function useFixedViewPort(value) {
+  fixedViewPort = !!value;
+}
 
 function useBaselineName(value) {
   addBaselineName = !!value;
@@ -41,9 +46,8 @@ if (EYES_API_KEY) {
     const version = (options || {}).version || '1.0.0';
     const throwOnFail = options ? options.throwOnFail : true;
     try {
-      await instance.open(name, `${test}, ${version}`, {
-        width: 100, height: 100
-      });
+      const viewport = fixedViewPort ? {width: 100, height: 100} : undefined;
+      await instance.open(name, `${test}, ${version}`, viewport);
       await fn.call(this);
     } catch (error) {
       await instance.abortIfNotClosed();
@@ -56,3 +60,4 @@ if (EYES_API_KEY) {
 
 module.exports.eyes = eyes;
 module.exports.useBaselineName = useBaselineName;
+module.exports.useFixedViewPort = useFixedViewPort;
