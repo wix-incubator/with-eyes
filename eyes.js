@@ -18,7 +18,7 @@ const eyes = {
 };
 
 let addBaselineName = false;
-let fixedViewPort = true;
+let fixedViewPort = false;
 
 function useFixedViewPort(value) {
   fixedViewPort = !!value;
