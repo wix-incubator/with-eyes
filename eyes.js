@@ -9,7 +9,7 @@ const {
 
 const eyes = {
   DEFAULT_TIMEOUT: parseInt(process.env.WITH_EYES_TIMEOUT, 10) || 30000,
-  checkImage: () => {},
+  checkImage: async () => ({asExpected: false}),
   // eslint-disable-next-line object-shorthand, no-unused-vars
   openEyes: function (fn, test, options) {
     return fn.call(this);
@@ -41,7 +41,9 @@ if (EYES_API_KEY) {
     const version = (options || {}).version || '1.0.0';
     const throwOnFail = options ? options.throwOnFail : true;
     try {
-      await instance.open(name, `${test}, ${version}`);
+      await instance.open(name, `${test}, ${version}`, {
+        width: 100, height: 100
+      });
       await fn.call(this);
     } catch (error) {
       await instance.abortIfNotClosed();
