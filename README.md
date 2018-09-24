@@ -69,6 +69,16 @@ However due to webpage nature, the webpage (screenshotted image) might change it
 In order to overcome this, this library automatically sets `100x100` viewport size,
 so that environment doesn't change due to change in a webpage.
 
+If you want to disable this behavior:
+
+```js
+const {useFixedViewPort} = require('with-eyes');
+
+before(() => {
+  beforeEach(() => useFixedViewPort(false));
+});
+```
+
 ### Using Baseline name
 
 By default `eyes` always saves baseline within its environment (combination of OS, Viewport Size and Browser). If you want to compare different browsers you should set [Baseline Name](https://help.applitools.com/hc/en-us/articles/360006914692-Cross-Environment-Testing).
