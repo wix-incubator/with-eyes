@@ -4,7 +4,8 @@ const {Eyes} = require('eyes.images');
 
 const {
   EYES_API_KEY,
-  EYES_BATCH_UUID
+  EYES_BATCH_UUID,
+  EYES_PLATFORM
 } = process.env;
 
 const eyes = {
@@ -32,7 +33,7 @@ if (EYES_API_KEY) {
   const {name} = require(path.join(process.cwd(), 'package.json'));
   const instance = new Eyes();
 
-  instance.setOs(process.platform);
+  instance.setOs(EYES_PLATFORM || process.platform);
   instance.setApiKey(EYES_API_KEY);
   instance.setBatch(name, EYES_BATCH_UUID || uuid.v4());
 
