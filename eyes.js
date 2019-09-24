@@ -37,8 +37,8 @@ if (EYES_API_KEY) {
   instance.setApiKey(EYES_API_KEY);
   instance.setBatch(name, EYES_BATCH_UUID || uuid.v4());
   
-  if (process.env.APPLITOOLS_SERVER_URL) {
-    eyes.setServerUrl(process.env.APPLITOOLS_SERVER_URL);
+  if (process.env.EYES_API_SERVER_URL) {
+    eyes.setServerUrl(process.env.EYES_API_SERVER_URL);
   }
 
   eyes.checkImage = instance.checkImage.bind(instance);
