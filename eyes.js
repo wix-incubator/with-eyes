@@ -36,7 +36,7 @@ if (EYES_API_KEY) {
   instance.setOs(EYES_PLATFORM || process.platform);
   instance.setApiKey(EYES_API_KEY);
   instance.setBatch(name, EYES_BATCH_UUID || uuid.v4());
-  
+
   if (process.env.EYES_API_SERVER_URL) {
     instance.setServerUrl(process.env.EYES_API_SERVER_URL);
   }
