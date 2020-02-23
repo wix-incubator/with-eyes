@@ -5,12 +5,14 @@ const {Eyes} = require('@applitools/eyes-images');
 const {
   EYES_API_KEY,
   EYES_BATCH_UUID,
-  EYES_PLATFORM
+  EYES_PLATFORM,
+  EYES_API_SERVER_URL,
+  WITH_EYES_TIMEOUT
 } = process.env;
 
 const eyes = {
-  DEFAULT_TIMEOUT: parseInt(process.env.WITH_EYES_TIMEOUT, 10) || 30000,
-  checkImage: async () => ({asExpected: false}),
+  DEFAULT_TIMEOUT: parseInt(WITH_EYES_TIMEOUT, 10) || 30000,
+  checkImage: async () => false,
   // eslint-disable-next-line object-shorthand, no-unused-vars
   openEyes: function (fn, test, options) {
     return fn.call(this);
@@ -33,12 +35,14 @@ if (EYES_API_KEY) {
   const {name} = require(path.join(process.cwd(), 'package.json'));
   const instance = new Eyes();
 
-  instance.setHostOS(EYES_PLATFORM || process.platform);
+  if (EYES_PLATFORM || process.platform) {
+    instance.setHostOS(EYES_PLATFORM || process.platform);
+  }
   instance.setApiKey(EYES_API_KEY);
   instance.setBatch(name, EYES_BATCH_UUID || uuid.v4());
 
-  if (process.env.EYES_API_SERVER_URL) {
-    instance.setServerUrl(process.env.EYES_API_SERVER_URL);
+  if (EYES_API_SERVER_URL) {
+    instance.setServerUrl(EYES_API_SERVER_URL);
   }
 
   eyes.checkImage = instance.checkImage.bind(instance);
