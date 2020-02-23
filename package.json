@@ -31,7 +31,7 @@
     "mocha": "^5.1.1"
   },
   "dependencies": {
-    "eyes.images": "3.6.3",
+    "@applitools/eyes-images": "^4.12.36",
     "uuid": "^3.2.1"
   },
   "eslintConfig": {
