@@ -15,8 +15,8 @@ describe('mocha', () => {
 
   eyes.it('should allow overriding default timeout', function () {
     expect(this.timeout()).to.equal(60000);
-    this.timeout(500);
-    expect(this.timeout()).to.equal(500);
+    this.timeout(5000);
+    expect(this.timeout()).to.equal(5000);
   });
 
   eyes.it('should check the image', async () => {
@@ -53,7 +53,7 @@ describe('mocha', () => {
     });
     eyes.it('shouldnt create new baseline image', async () => {
       const result = await eyes.checkImage(require('./stubs/image2.json'));
-      expect(result.asExpected).to.be.false;
+      expect(result).to.be.false;
     }, {throwOnFail: false});
   });
 

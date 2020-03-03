@@ -42,7 +42,7 @@ describe('jasmine', () => {
     });
     eyes.it('shouldnt create new baseline image', async () => {
       const result = await eyes.checkImage(require('./stubs/image2.json'));
-      expect(result.asExpected).toBeFalsy();
+      expect(result).toBeFalsy();
     }, {throwOnFail: false});
   });
 

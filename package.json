@@ -1,6 +1,6 @@
 {
   "name": "with-eyes",
-  "version": "2.0.3",
+  "version": "3.0.0",
   "license": "UNLICENSED",
   "author": {
     "name": "Mantas Miliukas",
@@ -31,7 +31,7 @@
     "mocha": "^5.1.1"
   },
   "dependencies": {
-    "eyes.images": "3.6.3",
+    "@applitools/eyes-images": "^4.12.36",
     "uuid": "^3.2.1"
   },
   "eslintConfig": {
