@@ -13,6 +13,7 @@ const {
 const eyes = {
   DEFAULT_TIMEOUT: parseInt(WITH_EYES_TIMEOUT, 10) || 30000,
   checkImage: async () => false,
+  // eslint-disable-next-line no-unused-vars
   setMatchTimeout: timeout => false,
   // eslint-disable-next-line object-shorthand, no-unused-vars
   openEyes: function (fn, test, options) {
