@@ -37,6 +37,10 @@ describe('jest', () => {
     await eyes.checkImage(require('./stubs/image.json'), 'image 2');
   });
 
+  eyes.test('should set match timeout', async () => {
+    eyes.setMatchTimeout(0);
+  });
+
   eyes.test.skip('should skip this test', () => {
     expect(true).to.be.false;
   });

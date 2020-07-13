@@ -5,6 +5,7 @@ const {
     DEFAULT_TIMEOUT,
     openEyes,
     checkImage,
+    setMatchTimeout,
     abortIfNotClosed
   },
   useBaselineName,
@@ -13,6 +14,7 @@ const {
 
 const eyes = {
   checkImage,
+  setMatchTimeout,
   abortIfNotClosed
 };
 
