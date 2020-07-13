@@ -1,5 +1,5 @@
 const {expect} = require('chai');
-const {eyes, useBaselineName, useFixedViewPort} = require('../');
+const {eyes, useBaselineName} = require('../');
 
 describe('mocha', () => {
 
