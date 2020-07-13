@@ -13,6 +13,7 @@ const {
 const eyes = {
   DEFAULT_TIMEOUT: parseInt(WITH_EYES_TIMEOUT, 10) || 30000,
   checkImage: async () => false,
+  setMatchTimeout: timeout => false,
   // eslint-disable-next-line object-shorthand, no-unused-vars
   openEyes: function (fn, test, options) {
     return fn.call(this);
@@ -46,6 +47,7 @@ if (EYES_API_KEY) {
   }
 
   eyes.checkImage = instance.checkImage.bind(instance);
+  eyes.setMatchTimeout = instance.setMatchTimeout.bind(instance);
   eyes.abortIfNotClosed = instance.abortIfNotClosed.bind(instance);
 
   eyes.openEyes = async function (fn, test, options) {
